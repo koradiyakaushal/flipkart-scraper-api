@@ -66,6 +66,7 @@ const product = async (link, type) => {
         let discount_percent = parseInt(100 * (1 - currentPrice / originalPrice))
         let category = '';
         let subcategory = '';
+        let subsubcategory = '';
         try{
             category = webPageContents.split('_2whKao')[2].split('">')[1].split('</a>')[0];
             console.log('category: ', category);
@@ -76,6 +77,13 @@ const product = async (link, type) => {
         try{
             subcategory = webPageContents.split('_2whKao')[3].split('">')[1].split('</a>')[0];
             console.log('subcategory: ', subcategory);
+        }
+        catch(e){
+            console.log(e)
+        }
+        try{
+            subsubcategory = webPageContents.split('_2whKao')[4].split('">')[1].split('</a>')[0];
+            console.log('subsubcategory: ', subsubcategory);
         }
         catch(e){
             console.log(e)
@@ -276,6 +284,7 @@ const product = async (link, type) => {
             "share_url": properURI,
             "category": category,
             "subcategory": subcategory,
+            "subsubcategory": subsubcategory,
             "seller": {
                 "seller_name": null,
                 "seller_rating": null
