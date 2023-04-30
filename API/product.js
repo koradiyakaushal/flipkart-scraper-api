@@ -64,6 +64,22 @@ const product = async (link, type) => {
         } catch (e) { }
 
         let discount_percent = parseInt(100 * (1 - currentPrice / originalPrice))
+        let category = '';
+        let subcategory = '';
+        try{
+            category = webPageContents.split('_2whKao')[2].split('">')[1].split('</a>')[0];
+            console.log('category: ', category);
+        }
+        catch(e){
+            console.log(e)
+        }
+        try{
+            subcategory = webPageContents.split('_2whKao')[3].split('">')[1].split('</a>')[0];
+            console.log('subcategory: ', subcategory);
+        }
+        catch(e){
+            console.log(e)
+        }
 
         // product thumbnail
 
@@ -258,6 +274,8 @@ const product = async (link, type) => {
             "in_stock": inStock,
             "f_assured": fassured,
             "share_url": properURI,
+            "category": category,
+            "subcategory": subcategory,
             "seller": {
                 "seller_name": null,
                 "seller_rating": null
